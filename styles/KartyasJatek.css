@@ -1,0 +1,50 @@
+
+    .nev{
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+    }
+    .box{
+        margin: 0px auto 0px auto;
+    }
+    .box input{
+        width: 100%;
+        height: max-content;
+        font-size: 25px;
+        margin-top: 10px;
+    }
+    .box input{
+        text-align: center;
+    }
+    .box input:hover{
+        box-shadow: 5px 5px 5px grey;
+    }
+    .box img{
+        margin: 0px auto 0px auto;
+        display: block;
+    }
+    .box img:hover{
+        box-shadow: 10px 10px 5px grey;
+        cursor: pointer;
+    }
+    .gomb{
+        background-color: white;
+        border: none;
+        color: grey;
+        font-weight: 600;
+        display: none;
+    }
+    .gomb:hover{
+        background-color: yellow;
+        border: none;
+        text-shadow: 1px 1px grey;
+    }
+    .links{
+        font-size: 30px;
+        text-align: center;
+        display: none;
+    }
+    
+    #kep{
+        height: 500px;
+    }

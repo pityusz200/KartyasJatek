@@ -1,0 +1,38 @@
+
+.row{
+    background-color: #cce0ff;
+}
+
+.box{
+    padding: 15px;
+    border: solid 1px black;
+}
+.box:hover{
+    background-color: green;
+    cursor: pointer;
+}
+
+.box h1{
+    font-size: 40px;
+    text-align: center;
+}
+
+.box:hover h1{
+    color:white;
+}
+
+.cim{
+    text-align: center;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+
+.start{
+    display: block;
+    margin: 15px auto 15px auto;
+    width: 150px;
+    border: none;
+}
+.start:hover{
+    background-color: yellow;
+}
