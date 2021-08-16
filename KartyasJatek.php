@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="boot/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles/KartyasJatek.css">
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="scripts/KartyasJatek.js"></script>
     <title>Kártyás Játék Play</title>
 </head>
 
@@ -29,6 +27,8 @@
     <input type="button" value="Kövi ->" class="gomb" onclick="kovi()">
     </div>
 </div>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="scripts/KartyasJatek.js"></script>
 </body>
 
 </html>

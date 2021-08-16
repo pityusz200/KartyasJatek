@@ -1,9 +1,9 @@
     // RELOAD
     // AJAX
-    //function ajax(){
+    function ajax(){
         let dir = "kepek/";
         let fileextension = ".jpg";
-        let files = [];
+        let kepArray = [];
         $.ajax({
             url: dir,
             contentType: 'application/json; charset=utf-8',
@@ -11,15 +11,18 @@
                $(data).find("a:contains(" + fileextension + ")").each(function () {
                     var filename = this.href.replace(window.location.host, "").replace("http:///", "");
                     filename = filename.replace("KartyasJatek/", "");
-                    files.push(filename);
+                    kepArray.push(filename);
                     console.log("Filename: " + filename);
                     //$("body").append($("<img src=" + dir + filename + "></img>"));
                 });
             }
         });
-    //}
-    
-        //ajax();
+        
+        return kepArray;
+    }
+        let files = [];
+        files = ajax();
+        
         $( document ).ready(function() {
             if (files[0] == undefined) {
                 location.reload();
