@@ -12,7 +12,7 @@
                     var filename = this.href.replace(window.location.host, "").replace("http:///", "");
                     filename = filename.replace("KartyasJatek/", "");
                     kepArray.push(filename);
-                    console.log("Filename: " + filename);
+                    //console.log("Filename: " + filename);
                     //$("body").append($("<img src=" + dir + filename + "></img>"));
                 });
             }
