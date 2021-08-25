@@ -9,7 +9,7 @@
             contentType: 'application/json; charset=utf-8',
             success: function (data) {
                $(data).find("a:contains(" + fileextension + ")").each(function () {
-                    var filename = this.href.replace(window.location.host, "").replace("http:///", "");
+                    var filename = this.href.replace(window.location.host, "").replace("https:///", "");
                     filename = filename.replace("KartyasJatek/", "");
                     kepArray.push(filename);
                     //console.log("Filename: " + filename);
