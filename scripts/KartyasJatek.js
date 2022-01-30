@@ -1,5 +1,6 @@
     // RELOAD
     // AJAX
+    /*
     function ajax(){
         let dir = "kepek/";
         let fileextension = ".jpg";
@@ -31,6 +32,7 @@
         });
         let randomSzam = 0;
         //window.onload = filek();
+    */
 
     // CHECK
     function check(){
@@ -66,8 +68,10 @@
     }
 
     // FILEK FUNCTION
+    filek();
     function filek() {
-        randomSzam = Math.floor(Math.random() * files.length-1)+1;
+        eddig = files.length - 1;
+        randomSzam = Math.floor(Math.random() * eddig)+1;
         console.log("randomSzam:" + randomSzam);
         String.prototype.replaceAt = function (index, char) {
             let a = this.split("");
