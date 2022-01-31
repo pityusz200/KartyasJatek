@@ -8,64 +8,45 @@
     <link rel="stylesheet" href="styles/KartyasJatekIndex.css">
     <script src="scripts/KartyasJatekIndex.js"></script>
     <script src="scripts/KartyasJatek.js"></script>
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <title>Kártyás Játék</title>
 </head>
-<body style="background-color: #cce0ff;">
+<body>
 
+    <input type="button" value="Regisztráció" style="background-color: yellow;" onclick="window.location.href='regisztracio.php'">
+    <input type="button" value="Bejelentkezés" style="background-color: yellow;" onclick="window.location.href=''">
     <button class="start" onmouseover="myScriptIN()" onmouseout="myScriptOUT()" onclick="window.location.href='KartyasJatek.php'"><h1 class="cim">Test</h1></button>
     <div id="container" class="container" style= "margin-top: 80px;">
     <?php
-        /*
-        for ($i=0; $i < 10; $i++) {
-            echo '<div class="row">';
-            for ($j=0; $j < 4; $j++) { 
-                echo '
-                <div class="col-sm-3 box">
-                    <img src="kepek/test.jpg" class="img-thumbnail" alt="kep">
-                    <h1>Kati Béla</h1>
-                </div>';
-            }
-            echo '</div>';
-        }*/
+    
+    $path = './kepek/default';
+    $kepek = scandir($path);
+    for ($i = 0; $i < count($kepek)-2; $i++) {
+        $kepek[$i] = $kepek[$i+2];
+    }
+
+    array_pop($kepek);
+    array_pop($kepek);
     ?>
 
-    <script>
-
-        let ajaxArray = [];
-        ajaxArray = ajax();
-        
-        $( document ).ready(function() {
-            if (ajaxArray[0] == undefined) {
-                location.reload();
+    <?php
+    $szamolo = 0;    
+        for ($i=0; $i < count($kepek); $i++) {
+            echo '<div class="row">';
+            for ($j=0; $j < 4; $j++) { 
+                if($szamolo >= count($kepek)){
+                    break;
+                }
+                echo '
+                <div class="col-sm-3 box">
+                    <img src="kepek/default/'.$kepek[$szamolo].'" class="img-thumbnail" alt="kep">
+                    <h1>'.substr($kepek[$szamolo], 0, -4).'</h1>
+                </div>';
+                $szamolo = $szamolo + 1;
             }
-        
-        for (let i = 0; i < ajaxArray.length; i++) {
-            if (ajaxArray[i].includes("%20")) {
-                ajaxArray[i] = ajaxArray[i].replace("%20", " ");
-            }
-            
-            console.log(ajaxArray[i]);
+            echo '</div>';
         }
-
-        for (let i = 0; i < ajaxArray.length; i++) {
-            const rowDiv = document.createElement("div");
-            rowDiv.className = 'row';
-            rowDiv.id = i;
-            rowDiv.innerHTML = 'Hi 1!';
-            //document.body.appendChild(rowDiv);
-            document.getElementById('container').appendChild(rowDiv);
-            for (let j = 0; j < 4; j++) {
-                const kepekDiv = document.createElement("div");
-                kepekDiv.className = "col-sm-3";
-                kepekDiv.innerHTML = ajaxArray[i];
-                document.body.appendChild(kepekDiv);
-                document.getElementById(i).appendChild(kepekDiv);
-            }
-        }
-        });
-    </script>
-
+        
+    ?>
     </div>
 
 </body>

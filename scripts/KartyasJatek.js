@@ -35,9 +35,9 @@
     */
 
     // CHECK
+    document.getElementById("name").focus();
     function check(){
         var nev = document.getElementById("name").value;
-        console.log(files[randomSzam].slice(0, -4));
         if (nev.toUpperCase() == files[randomSzam].slice(0, -4).toUpperCase()) {
             document.getElementsByClassName("gomb")[0].style.display = "block";
             document.getElementsByClassName("gomb")[1].style.display = "block";
@@ -48,22 +48,13 @@
         }
     }
 
-    // MUTI
-    function muti(){
-        document.getElementsByClassName("links")[0].style.display = "block";
-    }
-
     function levago (szoveg, hanyat) {
-        console.log(szoveg);
         let a = [];
         a = szoveg.split("");
-        console.log("A: " + a);
         let eddig = a.length-hanyat;
-        console.log("EDDIG: " + eddig);
         for (let i = a.length-1; i > eddig; i--) {
             a.pop();
         }
-        console.log("A join elott: " + a);
         return a.join("");
     }
 
@@ -72,7 +63,6 @@
     function filek() {
         eddig = files.length - 1;
         randomSzam = Math.floor(Math.random() * eddig)+1;
-        console.log("randomSzam:" + randomSzam);
         String.prototype.replaceAt = function (index, char) {
             let a = this.split("");
             if (a[index] != " ") {
@@ -86,9 +76,7 @@
             files[randomSzam] = files[randomSzam].replace("%20", " ");
         }
         let nev = files[randomSzam];
-        console.log("Ki randomizált file: " + nev);   
         nev = levago(nev, 5);
-        console.log("Levagó után: " + nev);
         let nevRandomSzam = [];
         let seged = 0;
         let szamolo = 0;
@@ -112,13 +100,12 @@
         }
 
         // SZÖVEGBE TÖRLÉS
-        document.getElementById('kep').src= "kepek/" + nev + ".jpg";
+        document.getElementById('kep').src= "kepek/default/" + nev + ".jpg";
         while (szamolo <= 3) {
                 nev = nev.replaceAt(nevRandomSzam[szamolo], "_");
                 szamolo++;
         }
 
-        console.log("Kontroll: " + kontroll);
         document.getElementsByClassName("nev")[0].innerHTML = nev;
     }
 
@@ -134,5 +121,18 @@
 
     // NEXT GOMB
     function kovi(){
-        location.reload();
+        document.getElementById('name').value = "";
+        filek();
+        check();
+        document.getElementById("name").focus();
     }
+
+    var input = document.getElementById("name");
+    input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            if(document.getElementById("name").value.toUpperCase() == files[randomSzam].slice(0, -4).toUpperCase()){
+                kovi();
+            }
+        }
+    });

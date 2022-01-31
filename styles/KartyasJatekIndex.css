@@ -1,3 +1,6 @@
+html, body{
+    background-color: #cce0ff;
+}
 
 .row{
     background-color: #cce0ff;
@@ -6,6 +9,7 @@
 .box{
     padding: 15px;
     border: solid 1px black;
+    text-align: center;
 }
 .box:hover{
     background-color: green;
@@ -35,4 +39,9 @@
 }
 .start:hover{
     background-color: yellow;
+}
+
+.img-thumbnail{
+    width: 280px;
+    height: 380px;
 }
