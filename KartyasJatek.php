@@ -30,11 +30,15 @@
 <div class="container" style= "margin-top: 20px;">
     <div class="row">
         <div class="col-sm-4 box center">
-            <h1 class="nev">:D</h1>
-            <img src="" class="img-thumbnail" alt="kep" id="kep">
-            <input type="text" name="name" id="name"autocomplete="off" onkeyup="check()">
-            <input type="button" value="Kövi ->" class="button-1" id="koviGomb" onclick="kovi()">
-            <div> Ennyi pontod van:</div><div id = "pont"></div>
+            <div id="kartyak">
+                <h1 class="nev">:D</h1>
+                <img src="" class="img-thumbnail" alt="kep" id="kep">
+                <input type="text" name="name" id="name"autocomplete="off" onkeyup="check()">
+                <input type="button" value="Kövi ->" class="button-1 center" id="koviGomb" onclick="kovi()">
+                <div> Ennyi pontod van:</div><div id = "pont"></div>
+            </div>
+            <div id="vege"></div>
+            <input type="button" value="Újra!" class="button-2" style="display:none;" id="ujraButton" onclick="location.reload();">
         </div>
     </div>
     <script src="scripts/KartyasJatek.js"></script>

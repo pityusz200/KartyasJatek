@@ -1,53 +1,20 @@
-    // RELOAD
-    // AJAX
-    /*
-    function ajax(){
-        let dir = "kepek/";
-        let fileextension = ".jpg";
-        let kepArray = [];
-        $.ajax({
-            url: dir,
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-               $(data).find("a:contains(" + fileextension + ")").each(function () {
-                    var filename = this.href.replace(window.location.host, "").replace("https:///", "");
-                    filename = filename.replace("KartyasJatek/", "");
-                    kepArray.push(filename);
-                    //console.log("Filename: " + filename);
-                    //$("body").append($("<img src=" + dir + filename + "></img>"));
-                });
-            }
-        });
-        
-        return kepArray;
-    }
-        let files = [];
-        files = ajax();
-        
-        $( document ).ready(function() {
-            if (files[0] == undefined) {
-                location.reload();
-            }
-            filek();
-        });
-        let randomSzam = 0;
-        //window.onload = filek();
-    */
-   
-    // CHECK
-
     document.getElementById("name").focus();
     var pont = 0;
-         
+    var index = 0;
+    var max = 1;
+    randomSzamArray = [];
+
+    //CHECK
     function check(){
         var nev = document.getElementById("name").value;
-        if (nev.toUpperCase() == files[randomSzam].slice(0, -4).toUpperCase()) {
+        if (nev.toUpperCase() == files[randomSzamArray[index]].slice(0, -4).toUpperCase()) {
             document.getElementById("koviGomb").style.display = "block";
         }else{
             document.getElementById("koviGomb").style.display = "none";
         }
     }
 
+    //SZÖVEGBŐL LEHET VELE LEVÁGNI X KARAKTERT
     function levago (szoveg, hanyat) {
         let a = [];
         a = szoveg.split("");
@@ -58,11 +25,27 @@
         return a.join("");
     }
 
-    // FILEK FUNCTION
+    // FILEK FUNCTION: BETÖLTI A KÉPET A SZÖVEGET
     filek();
     function filek() {
         eddig = files.length - 1;
-        randomSzam = Math.floor(Math.random()*(eddig-0+1)+0);
+        
+        if(index >= eddig + 1){
+            pont = pont + 1;
+            finish();
+        }
+
+        if(index == 0){
+            for (let i = 0; i < eddig+1; i++) {
+                randomSzam = Math.floor(Math.random()*(eddig-0+1)+0);
+                if(!randomSzamArray.includes(randomSzam)){
+                    randomSzamArray.push(randomSzam);
+                }else{
+                    i--;
+                }
+             }
+        }
+
         String.prototype.replaceAt = function (index, char) {
             let a = this.split("");
             if (a[index] != " ") {
@@ -72,10 +55,10 @@
         }
 
         // DEKLARÁCIÓ
-        if (files[randomSzam].includes("%20")) {
-            files[randomSzam] = files[randomSzam].replace("%20", " ");
+        if (files[randomSzamArray[index]].includes("%20")) {
+            files[randomSzamArray[index]] = files[randomSzamArray[index]].replace("%20", " ");
         }
-        let nev = files[randomSzam];
+        let nev = files[randomSzamArray[index]];
         nev = levago(nev, 5);
         let nevRandomSzam = [];
         let seged = 0;
@@ -111,21 +94,29 @@
 
     // BENNE VAN
     function benneVan(nevRandomSzam, seged){
-        for (let index = 0; index < nevRandomSzam.length; index++) {
-                if (nevRandomSzam[index] == seged || seged == nevRandomSzam[index]-1 || seged == nevRandomSzam[index] + 1) {
+        for (let j = 0; j < nevRandomSzam.length; j++) {
+                if (nevRandomSzam[j] == seged || seged == nevRandomSzam[j]-1 || seged == nevRandomSzam[j] + 1) {
                 return false;
             }
         }
         return true;
     }
 
+    function finish(){
+        document.getElementById("kartyak").style.display = "none";
+        document.getElementById("ujraButton").style.display = "block";
+        document.getElementById("vege").innerHTML = "<h3>Vége.<br> Összes pontszámod: <br>" + pont + " pont / " + max + " pont" + "</h3>";
+    }
+
     // NEXT GOMB
     function kovi(){
         document.getElementById('name').value = "";
+        index = index + 1
         filek();
         check();
         pont = pont + 1;
-        document.getElementById('pont').innerHTML = pont;
+        max = eddig + 1;
+        document.getElementById('pont').innerHTML = pont + " / " + max;
         document.getElementById("name").focus();
     }
 
@@ -133,7 +124,7 @@
     input.addEventListener("keyup", function(event) {
         if (event.keyCode === 13) {
             event.preventDefault();
-            if(document.getElementById("name").value.toUpperCase() == files[randomSzam].slice(0, -4).toUpperCase()){
+            if(document.getElementById("name").value.toUpperCase() == files[randomSzamArray[index]].slice(0, -4).toUpperCase()){
                 kovi();
             }
         }
@@ -159,6 +150,7 @@
         document.body.style.backgroundColor = "yellow";
         document.getElementById('table').style.backgroundColor = "yellow";
     }
+
     function myScriptOUT(){
         document.body.style.backgroundColor = "#cce0ff";
         document.getElementById('table').style.backgroundColor = "#cce0ff";

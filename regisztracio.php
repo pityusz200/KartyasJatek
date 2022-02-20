@@ -33,7 +33,7 @@ if(isset($_POST["Submit"])){
         mkdir('kepek/'.$felh, 0777, true);
         $_SESSION['nev'] = $felh;
         echo '<h1>Sikeres regisztráció! A felhasználóneved:<br>'. $felh.'</h1>
-        <center><a href="KartyasJatekIndex.php"><input type="button" value="Főoldal" style="background-color: yellow;"></a></center>
+        <center><a href="KartyasJatekIndex.php"><input type="button" value="Főoldal" class="button-1 center""></a></center>
         <?php';
     }else{
         echo '<h1>Sikertelen regisztráció! Próbáld újra!</h1>';
