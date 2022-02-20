@@ -1,50 +1,202 @@
+html, body{
+    background-color: #cce0ff;
+    min-height: 100vh;
+}
 
-    .nev{
-        text-align: center;
-        text-transform: uppercase;
-        letter-spacing: 5px;
-    }
-    .box{
-        margin: 0px auto 0px auto;
-    }
-    .box input{
-        width: 100%;
-        height: max-content;
-        font-size: 25px;
-        margin-top: 10px;
-    }
-    .box input{
-        text-align: center;
-    }
-    .box input:hover{
-        box-shadow: 5px 5px 5px grey;
-    }
-    .box img{
-        margin: 0px auto 0px auto;
-        display: block;
-    }
-    .box img:hover{
-        box-shadow: 10px 10px 5px grey;
-        cursor: pointer;
-    }
-    .gomb{
-        background-color: white;
-        border: none;
-        color: grey;
-        font-weight: 600;
-        display: none;
-    }
-    .gomb:hover{
-        background-color: yellow;
-        border: none;
-        text-shadow: 1px 1px grey;
-    }
-    .links{
-        font-size: 30px;
-        text-align: center;
-        display: none;
-    }
+.yellow{
+    background-color: yellow;
+}
+
+.center{
+    text-align: center;
+    margin: 0px auto;
+}
     
-    #kep{
-        height: 500px;
-    }
+.nev{
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+#koviGomb{
+    border: none;
+    color: grey;
+    font-weight: 600;
+    display: none;
+}
+    
+#kep{
+    height: 500px;
+}
+   
+.row{
+    background-color: #cce0ff;
+}
+    
+.box{
+    padding: 15px;
+    border: solid 1px black;
+    text-align: center;
+}
+.box:hover{
+    background-color: #b4d2ff;
+    cursor: pointer;
+}
+    
+.box h1{
+    font-size: 40px;
+    text-align: center;
+}
+    
+.start{
+    display: block;
+    margin: 15px auto 15px auto;
+    width: 150px;
+    border: none;
+    border-radius: 50px;
+}
+
+    
+.img-thumbnail{
+    width: 280px;
+    height: 380px;
+}
+    
+button{
+    background-color: #cce0ff;
+}
+    
+.cim{
+    text-align: center;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+    
+.img-thumbnail{
+    width: 280px;
+    height: 380px;
+}
+    
+h1{
+    text-align: center;
+}
+    
+h3{
+    text-align: center;
+}
+    
+.bejRegForm{
+    text-align: center;
+}
+    
+span{
+    display: flex;
+}
+    
+#BejelentkezveFelirat{
+    background-color: yellow;
+    margin: 0px;
+    padding: 5px;
+    width: max-content;
+    border: solid black 1px;
+}
+    
+#kij{
+    display: flex;
+}
+
+#kijelentkezoSzoveg{
+    margin: auto 0px;
+    padding-left: 5px;
+    color: rgb(61, 61, 61);
+}
+
+#fileFeltotoForm{
+    text-align: center;
+    margin: 10px auto;
+    background-color: #b4d2ff;
+    border: solid rgb(133, 133, 133) 1px;
+}
+
+#fileFeltotoForm form{
+    margin: 20px;
+}
+
+#fileFeltotoForm h1{
+    margin: 15px;
+}
+
+
+/* BUTTON */
+.button-1 {
+  background-color: #fff000;
+  border-radius: 12px;
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px 15px;
+  text-align: center;
+  transition: 200ms;
+  box-sizing: border-box;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-1:not(:disabled):hover,
+.button-1:not(:disabled):focus {
+  outline: 0;
+  background: #f4e603;
+  box-shadow: 0 0 0 2px rgba(0,0,0,.2), 0 3px 8px 0 rgba(0,0,0,.15);
+}
+
+.button-1:disabled {
+  filter: saturate(0.2) opacity(0.5);
+  cursor: not-allowed;
+}
+
+.button-2 {
+  align-items: center;
+  background-clip: padding-box;
+  background-color: #f4e603;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.button-2:hover,
+.button-2:focus {
+  background-color: #f4e603;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.button-2:hover {
+  transform: translateY(-1px);
+}
+
+.button-2:active {
+  background-color: #f4e603;
+  box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+  transform: translateY(0);
+}

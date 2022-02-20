@@ -9,38 +9,35 @@
     <title>Kártyás Játék Play</title>
 </head>
 
-
-<?php
-$path = './kepek/default';
-$kepek = scandir($path);
-for ($i = 0; $i < count($kepek)-2; $i++) {
-    $kepek[$i] = $kepek[$i+2];
-}
-array_pop($kepek);
-array_pop($kepek);
-?>
+<input type="button" value="Főoldal" class="button-2" onclick="window.location.href='KartyasJatekIndex.php'">
+<?php require_once('header.php') ?>
+<?php require_once('KartyasJatekFajlok.php');?>
 
 <script type="text/javascript">
     <?php
-        $js_array = json_encode($kepek);
-        echo "let files = ". $js_array . ";\n";
+        echo "let files = ". json_encode($kepek) . ";\n";
+        
+        if(isset($_SESSION['nev'])){
+            echo "let js_fnev = ". json_encode($_SESSION['nev']) . ";\n";
+        }else{
+            echo "let js_fnev = " . json_encode("default");
+        }
     ?>
 </script>
 
-<input type="button" value="Főoldal" style="background-color: yellow;" onclick="window.location.href='KartyasJatekIndex.php'">
 
 <body style="background-color: #cce0ff;">
-<div class="container" style= "margin-top: 60px;">
+<div class="container" style= "margin-top: 20px;">
     <div class="row">
-        <div class="col-sm-4 box">
+        <div class="col-sm-4 box center">
             <h1 class="nev">:D</h1>
             <img src="" class="img-thumbnail" alt="kep" id="kep">
             <input type="text" name="name" id="name"autocomplete="off" onkeyup="check()">
-            <input type="button" value="Kövi ->" class="gomb" onclick="kovi()">
+            <input type="button" value="Kövi ->" class="button-1" id="koviGomb" onclick="kovi()">
+            <div> Ennyi pontod van:</div><div id = "pont"></div>
         </div>
     </div>
     <script src="scripts/KartyasJatek.js"></script>
 </div><br><br><br><br>
 </body>
-
 </html>

@@ -33,18 +33,18 @@
         let randomSzam = 0;
         //window.onload = filek();
     */
-
+   
     // CHECK
+
     document.getElementById("name").focus();
+    var pont = 0;
+         
     function check(){
         var nev = document.getElementById("name").value;
         if (nev.toUpperCase() == files[randomSzam].slice(0, -4).toUpperCase()) {
-            document.getElementsByClassName("gomb")[0].style.display = "block";
-            document.getElementsByClassName("gomb")[1].style.display = "block";
+            document.getElementById("koviGomb").style.display = "block";
         }else{
-            document.getElementsByClassName("gomb")[0].style.display = "none";
-            document.getElementsByClassName("gomb")[1].style.display = "none";
-            document.getElementsByClassName("links")[0].style.display = "none";
+            document.getElementById("koviGomb").style.display = "none";
         }
     }
 
@@ -62,7 +62,7 @@
     filek();
     function filek() {
         eddig = files.length - 1;
-        randomSzam = Math.floor(Math.random() * eddig)+1;
+        randomSzam = Math.floor(Math.random()*(eddig-0+1)+0);
         String.prototype.replaceAt = function (index, char) {
             let a = this.split("");
             if (a[index] != " ") {
@@ -100,7 +100,7 @@
         }
 
         // SZÖVEGBE TÖRLÉS
-        document.getElementById('kep').src= "kepek/default/" + nev + ".jpg";
+        document.getElementById('kep').src= "kepek/"+ js_fnev +"/" + nev + ".jpg";
         while (szamolo <= 3) {
                 nev = nev.replaceAt(nevRandomSzam[szamolo], "_");
                 szamolo++;
@@ -124,6 +124,8 @@
         document.getElementById('name').value = "";
         filek();
         check();
+        pont = pont + 1;
+        document.getElementById('pont').innerHTML = pont;
         document.getElementById("name").focus();
     }
 
@@ -136,3 +138,36 @@
             }
         }
     });
+
+    //Kép törtlése
+    function torles(btn) {
+        var btnName = btn.name;
+            $.ajax({
+            type: "GET",
+            url: 'torles.php',
+            data: {btnName: btnName},
+            success: function(data){
+                alert(data);
+                location.reload();
+            }
+        });
+    }
+
+    //START GOMB
+
+    function myScriptIN(){
+        document.body.style.backgroundColor = "yellow";
+        document.getElementById('table').style.backgroundColor = "yellow";
+    }
+    function myScriptOUT(){
+        document.body.style.backgroundColor = "#cce0ff";
+        document.getElementById('table').style.backgroundColor = "#cce0ff";
+    }
+
+    function kijelentkezesSzovegLathato(){
+        document.getElementById("kijelentkezoSzoveg").hidden = false;
+    }
+
+    function kijelentkezesSzovegEltun(){
+        document.getElementById("kijelentkezoSzoveg").hidden = true;
+    }
